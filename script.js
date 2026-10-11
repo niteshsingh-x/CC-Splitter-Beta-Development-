@@ -29,6 +29,7 @@ function calculateSplit() {
 
     if (!rawValue) return;
 
+    // Clean out slashes and extra characters to capture all numbers sequentially
     const parsedTokens = rawValue.replace(/\//g, ' ').match(/\d+/g);
 
     if (!parsedTokens || parsedTokens.length < 2) {
@@ -40,6 +41,7 @@ function calculateSplit() {
     let serialNumber = 1;
     let baseNumbers = [];
 
+    // Find the 6-digit serial number anywhere in the input tokens
     const serialIndex = values.findIndex(v => v.toString().length === 6);
 
     if (serialIndex !== -1) {
@@ -47,6 +49,17 @@ function calculateSplit() {
         baseNumbers = values.filter((_, idx) => idx !== serialIndex);
     } else {
         baseNumbers = values;
+    }
+
+    // If the new format leaves us with a standalone "1" from (1 / 40) along with the total count
+    // we need to filter out that baseline "1" so it doesn't trick the tool into thinking people count = 1.
+    // We only filter out the "1" if there are 3 numbers left after removing the serial number.
+    if (baseNumbers.length >= 2) {
+        const indexOne = baseNumbers.indexOf(1);
+        // Only remove the "1" if it explicitly came from a format like (1 / 40) where it accompanies a larger pool
+        if (indexOne !== -1 && baseNumbers.length > 2) {
+            baseNumbers.splice(indexOne, 1);
+        }
     }
 
     if (baseNumbers.length < 2) return;
