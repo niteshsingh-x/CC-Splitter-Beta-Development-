@@ -8,46 +8,24 @@
 </head>
 <body>
 
-<div class="layout-wrapper">
-    <!-- Hints / Tips Sidebar Panel -->
-    <div class="side-guide">
-        <div class="guide-title">Hints / Tips</div>
-        <ul class="guide-list">
-            <li class="guide-item">
-                <span class="guide-highlight">1-Digit / Smaller Num.</span>
-                = number of peoples
-            </li>
-            <li class="guide-item">
-                <span class="guide-highlight">2-Digit / Larger Num.</span>
-                = total coupon counts
-            </li>
-            <li class="guide-item">
-                <span class="guide-highlight">6-Digit Num.</span>
-                = 1st coupon id in the series
-            </li>
-        </ul>
+<div class="container">
+    <div class="brand-header">
+        <span class="company-name">Sellergize</span>
+        <span class="tool-title">Crawler Coupon Distributor</span>
+    </div>
+    
+    <div class="input-group">
+        <label for="numberInput">Enter numbers (e.g., "106 6", "6/106", "106 6 217440"):</label>
+        <input type="text" id="numberInput" placeholder="Type here..." autocomplete="off" autofocus>
     </div>
 
-    <!-- Main Container Layout -->
-    <div class="container">
-        <div class="brand-header">
-            <span class="company-name">Sellergize</span>
-            <span class="tool-title">Crawler Coupon Distributor</span>
-        </div>
-        
-        <div class="input-group">
-            <label for="numberInput">Enter numbers (e.g., "106 6", "6/106", "106 6 217440"):</label>
-            <input type="text" id="numberInput" placeholder="Type here..." autocomplete="off" autofocus>
-        </div>
-
-        <div id="errorMessage" class="error"></div>
-        
-        <div id="actionBar" class="action-bar">
-            <button id="copyAllBtn" class="copy-all-btn">Copy All</button>
-        </div>
-        
-        <div id="output" class="output-group"></div>
+    <div id="errorMessage" class="error"></div>
+    
+    <div id="actionBar" class="action-bar">
+        <button id="copyAllBtn" class="copy-all-btn">Copy All</button>
     </div>
+    
+    <div id="output" class="output-group"></div>
 </div>
 
 <script src="script.js"></script>
